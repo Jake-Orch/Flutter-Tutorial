@@ -23,23 +23,11 @@ class Home extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.blue[900],
       ),
-      body: Center(
-        child: ElevatedButton.icon(
-          onPressed: () {},
-          icon: Icon(
-            Icons.mail,
-            color: Colors.white,
-          ),
-          label: Text(
-            'Mail me',
-            style: TextStyle(
-              color: Colors.white,
-            )
-          ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue[900],
-          )
-        )
+      body: Container(
+        padding: EdgeInsets.fromLTRB(10, 20, 30, 40),
+        margin: EdgeInsets.all(10),
+        color: Colors.grey[400],
+        child: Text('Hello'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
@@ -50,7 +38,6 @@ class Home extends StatelessWidget {
               color: Colors.white,
             )
         ),
-
       ),
     );
   }
