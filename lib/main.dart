@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.blue[900],
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Row(
@@ -38,10 +38,12 @@ class Home extends StatelessWidget {
             color: Colors.cyan,
             child: Text('One')
           ),
-          Container(
-            padding: EdgeInsets.all(35),
-            color: Colors.blue,
-            child: Text('Two'),
+          Center(
+            child: Container(
+              padding: EdgeInsets.all(35),
+              color: Colors.blue,
+              child: Text('Two'),
+            ),
           ),
           Container(
             padding: EdgeInsets.all(50),
