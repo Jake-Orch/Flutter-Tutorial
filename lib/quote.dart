@@ -1,6 +1,6 @@
 class Quote {
-  String? author;
-  String? text;
+  String author = '';
+  String text = '';
 
-  Quote({this.author, this.text});
+  Quote({required this.author, required this.text});
 }

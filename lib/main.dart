@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quote.dart';
+import 'quote_card.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -89,43 +90,17 @@ class _QuoteListState extends State<QuoteList> {
     Quote(author: 'Martin Luther King Jr.', text: 'In the end, we will remember not the words of our enemies, but the silence of our friends'),
     Quote(author: 'Douglas Hofstader', text: 'Sometimes it seems as though each step towards AI, rather than producing something which everyone agrees is real intelligence, merely reveals what real intelligence is not')
   ];
-
-  Widget quoteTemplate(quote){
-    return Card(
-      margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              quote.text,
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey[600],
-              ),
-            ),
-            SizedBox(height: 6),
-            Text(
-              quote.author,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[800],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
+  
 
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: quotes.map((quote) => quoteTemplate(quote)).toList(),
+        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
     );
   }
 }
+
+
 
 
 
