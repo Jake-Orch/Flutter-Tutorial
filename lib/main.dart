@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'quote.dart';
 
 void main() {
   runApp(MaterialApp(
     home: Home(),
   ));
 }
+
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -23,36 +25,41 @@ class Home extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.blue[900],
       ),
-      body: Row(
+      body: Column(
         children: [
-          Expanded(
-            flex: 6,
-            child: Image.asset('assets/yak.png')
+          Row(
+            children: [
+              Expanded(
+                flex: 6,
+                child: Image.asset('assets/yak.png')
+              ),
+              Expanded(
+                flex: 3,
+                child: Container(
+                  padding: EdgeInsets.all(30),
+                  color: Colors.red,
+                  child: Text('1'),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  padding: EdgeInsets.all(30),
+                  color: Colors.orange,
+                  child: Text('2'),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  padding: EdgeInsets.all(30),
+                  color: Colors.yellow,
+                  child: Text('3'),
+                ),
+              )
+            ],
           ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              padding: EdgeInsets.all(30),
-              color: Colors.red,
-              child: Text('1'),
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              padding: EdgeInsets.all(30),
-              color: Colors.orange,
-              child: Text('2'),
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              padding: EdgeInsets.all(30),
-              color: Colors.yellow,
-              child: Text('3'),
-            ),
-          )
+          QuoteList(),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -65,6 +72,57 @@ class Home extends StatelessWidget {
             )
         ),
       ),
+    );
+  }
+}
+
+class QuoteList extends StatefulWidget {
+  const QuoteList({super.key});
+
+  @override
+  State<QuoteList> createState() => _QuoteListState();
+}
+
+class _QuoteListState extends State<QuoteList> {
+  List<Quote> quotes = [
+    Quote(author: 'Marcus Aurelius', text: 'The happiness of your life depends on the quality of your thoughts'),
+    Quote(author: 'Martin Luther King Jr.', text: 'In the end, we will remember not the words of our enemies, but the silence of our friends'),
+    Quote(author: 'Douglas Hofstader', text: 'Sometimes it seems as though each step towards AI, rather than producing something which everyone agrees is real intelligence, merely reveals what real intelligence is not')
+  ];
+
+  Widget quoteTemplate(quote){
+    return Card(
+      margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              quote.text,
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.grey[600],
+              ),
+            ),
+            SizedBox(height: 6),
+            Text(
+              quote.author,
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey[800],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        children: quotes.map((quote) => quoteTemplate(quote)).toList(),
     );
   }
 }
