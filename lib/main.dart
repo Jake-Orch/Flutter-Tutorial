@@ -60,7 +60,9 @@ class Home extends StatelessWidget {
               )
             ],
           ),
-          QuoteList(),
+          Expanded(
+            child: QuoteList(),
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -94,8 +96,15 @@ class _QuoteListState extends State<QuoteList> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
+    return ListView(
+        children: quotes.map((quote) => QuoteCard(
+          quote: quote,
+          delete: () {
+            setState(() {
+              quotes.remove(quote);
+            });
+          }
+        )).toList(),
     );
   }
 }
